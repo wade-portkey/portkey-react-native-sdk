@@ -8978,10 +8978,10 @@ react-native-safe-modules@^1.0.3:
   dependencies:
     dedent "^0.6.0"
 
-react-native-sdk-beta@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/react-native-sdk-beta/-/react-native-sdk-beta-1.0.4.tgz#99683f25b984ecea329b98052512d4370489ea36"
-  integrity sha512-JlDqmUcyIuvX4VHtDyTTWJd1KO3w4tkZmS+95PkupwNz15pYWTHivNOj4mj/rnAhyePWtYdbp8pW+9YLwVYLCw==
+react-native-sdk-beta@1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/react-native-sdk-beta/-/react-native-sdk-beta-1.0.6.tgz#c229834fab9274410dbcd349ab1249462a37dcf3"
+  integrity sha512-azz0Gy3m5LhPzba5F884DUwSYSxkCgWyzfqZGEe4cnZHKLZVs+FeTmqpTJWEFsQh4b+UHsGHqUQ0phAQCQAybQ==
   dependencies:
     "@apollo/client" "^3.7.3"
     "@babel/compat-data" "^7.22.20"
