@@ -1,6 +1,7 @@
 # Portkey React Native SDK
 
 ## Installation
+__Note: We should use react-native version less than v0.73__
 
 ### Step 1: Install npm package
 
@@ -10,13 +11,24 @@ npm install @portkey/react-native-sdk --save
 yarn add @portkey/react-native-sdk
 ```
 
-### Step 2: Config Android/IOS project
-
-1. We are using expo-related libraries, so you need to configure the expo autolinking plugin.
-
+**Step 2: Config** <br>
+1. We are using expo-related libraries, so you need to configure the expo autolinking plugin
 ``` groovy
-// in android/settings.gradle file, add the code
+//in android/settings.gradle file
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+        // add this maven path for expo-camera dependencies
+        maven {
+            url "../node_modules/expo-camera/android/maven"
+        }
+    }
+}
 
+// add the follow code for autolink
 apply from: new File(["node", "--print", "require.resolve('expo/package.json')"].execute(null, rootDir).text.trim(), "../scripts/autolinking.gradle");
 useExpoModules()
 ```
@@ -139,3 +151,7 @@ function exitWallet(): Promise<boolean>();
  Feel free to open an issue or contact us if you have any questions.
 
 ## Q&A
+Q: Why does Google login always prompt "login fail"?<br>
+A: Make sure the applicationId, keystore, .env file correspond correctly<br><br>
+Q: ![Image](./IMG/20231214-175724.jpeg) <br>
+A: make sure you have set the expo autolink config in android/settings.gradle file.
