@@ -29,6 +29,7 @@ packages/constants/constants-ca/network.ts
 /**/Pods/**
 Pods/
 Pods
+app_ios/build/
 packages/rn-sdk/app_ios/build/
 /**/*.apk
 /**/output-metadata.json
