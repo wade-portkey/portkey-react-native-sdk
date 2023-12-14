@@ -114,6 +114,9 @@ function guardiansManager();
 // Open settings manager page
 function settingsManager();
 
+// Open Scan QRCode page
+function scanQRCodeManager();
+
 // Open payment security manager page
 function paymentSecurityManager();
 

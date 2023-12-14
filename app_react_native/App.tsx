@@ -1,16 +1,9 @@
-import React, {useState} from 'react';
-import {
-  Modal,
-  View,
-  Text,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-} from 'react-native';
-import {portkey} from 'react-native-sdk-beta';
+import React, { useState } from 'react';
+import { Modal, View, Text, StyleSheet, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
+import { portkey } from 'react-native-sdk-beta';
 import 'react-native-get-random-values';
 
-function MyButton({title, onPress}) {
+function MyButton({ title, onPress }) {
   return (
     <TouchableOpacity style={styles.button} onPress={onPress}>
       <Text style={styles.buttonText}>{title}</Text>
@@ -23,11 +16,12 @@ const PortkeyUIManagerService = [
   ['openAssetsDashboard'],
   ['guardiansManager'],
   ['settingsManager'],
+  ['scanQRCodeManager'],
   ['paymentSecurityManager'],
   ['unlockWallet'],
 ];
 const PortkeyAccountService = [
-  ['callCaContractMethod'],
+  ['callCaContractMethod', 'GetVerifierServers', true],
   ['getWalletInfo'],
   ['getWalletState'],
   ['lockWallet'],
@@ -39,15 +33,9 @@ function App() {
   return (
     <View style={styles.container}>
       <View style={styles.buttonContainer}>
-        <MyButton
-          title="PortkeyUIManagerService"
-          onPress={() => setModalVisible1(true)}
-        />
+        <MyButton title="PortkeyUIManagerService" onPress={() => setModalVisible1(true)} />
       </View>
-      <MyButton
-        title="PortkeyAccountService"
-        onPress={() => setModalVisible2(true)}
-      />
+      <MyButton title="PortkeyAccountService" onPress={() => setModalVisible2(true)} />
 
       <Modal
         animationType="fade"
@@ -95,8 +83,7 @@ function App() {
               <MyButton
                 title={`Call Method: ${value[0]}`}
                 onPress={() => {
-                  console.error('Call Method:', value[0]);
-                  portkey[value[0]]
+                  portkey[value[0] as string]
                     .apply(portkey, value.slice(1))
                     .then(res => {
                       console.log('res', res);

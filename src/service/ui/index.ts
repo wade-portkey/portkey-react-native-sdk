@@ -44,6 +44,12 @@ export class UIManagerService implements IPortkeyUIManagerService {
     }
     this.openFromExternal(PortkeyEntries.ACCOUNT_SETTING_ENTRY);
   }
+  async scanQRCodeManager() {
+    if (!(await this.checkIsUnlocked())) {
+      throw new AccountError(1001);
+    }
+    this.openFromExternal(PortkeyEntries.SCAN_QR_CODE);
+  }
   async paymentSecurityManager() {
     if (!(await this.checkIsUnlocked())) {
       throw new AccountError(1001);
