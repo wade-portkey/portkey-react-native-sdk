@@ -108,7 +108,7 @@
     "web3-utils": "^4.1.0"
   },
   "scripts": {
-    "start": "react-native start --entry-file src/index.ts",
+    "start": "react-native start",
     "build": "rm -rf dist/ && tsc && babel src --out-dir dist --extensions \".js,.jsx,.ts,.tsx\" && cpy \"src/**/*.(json|png|svg|d.ts)\" dist",
     "postinstall": "node ./script/postinstall.js",
     "lint": "eslint . --ext .ts,.tsx",
