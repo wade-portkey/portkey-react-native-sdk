@@ -1,9 +1,10 @@
 # build index.android.bundle
-cd ../
+SCRIPT_DIR=$(dirname "$0")
+cd "$SCRIPT_DIR/../"
 if [ ! -d "android/src/main/assets" ]; then
   mkdir -p android/src/main/assets
 fi
 if [ ! -f "android/src/main/assets/index.android.bundle" ]; then
   touch android/src/main/assets/index.android.bundle
 fi
-react-native bundle --platform android --entry-file index.ts --bundle-output android/src/main/assets/index.android.bundle --assets-dest android/src/main/res/  --dev true
+react-native bundle --platform android --entry-file src/index.ts --bundle-output android/src/main/assets/index.android.bundle --assets-dest android/src/main/res/  --dev true

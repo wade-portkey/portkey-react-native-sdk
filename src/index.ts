@@ -1,7 +1,7 @@
 import 'reflect-metadata';
-import { initEntries } from './src/global/init/entries';
-import { initJsMethodService } from './src/global/init/services';
-import { initLanguage } from './src/i18n/index';
+import { initEntries } from './global/init/entries';
+import { initJsMethodService } from './global/init/services';
+import { initLanguage } from './i18n/index';
 
 // we use i18n to translate
 initLanguage();
@@ -13,4 +13,4 @@ initEntries();
 initJsMethodService();
 
 // export for npm
-export * from './src/service/core';
+export * from './service/core';
