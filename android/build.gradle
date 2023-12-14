@@ -24,11 +24,11 @@ def _targetSdkVersion = _ext.has('targetSdkVersion') ? _ext.targetSdkVersion : 3
 def _junitVersion = _ext.has('junitVersion') ? _ext.junitVersion : '4.13.2'
 def _mockitoVersion = _ext.has('mockitoVersion') ? _ext.mockitoVersion : '3.2.0'
 def _androidTestRunnerVersion = _ext.has('androidTestRunnerVersion') ? _ext.androidTestRunnerVersion : '1.1.0'
-//preBuild.doFirst {
-//    System.err.println("Build fresh bundle...")
-//    def process = (getRootProject().rootDir.path.replace("/android","") + "/script/build-android-bundle.sh").execute()
-//    process.waitForProcessOutput(System.out, System.err)
-//}
+preBuild.doFirst {
+    System.err.println("Build fresh bundle...")
+    def process = (getRootProject().rootDir.path.replace("/app_android","") + "/script/build-android-bundle.sh").execute()
+    process.waitForProcessOutput(System.out, System.err)
+}
 
 android {
      namespace 'io.aelf.portkey'
