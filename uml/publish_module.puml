@@ -1,0 +1,63 @@
+@startuml
+interface IPortkeyAccountService {
+  +callCaContractMethod(props: CallCaMethodProps): Promise<BaseMethodResult>
+  +getWalletInfo(): Promise<UnlockedWallet>
+  +getWalletState(): Promise<WalletState>
+  +lockWallet(): Promise<boolean>
+  +exitWallet(): Promise<boolean>
+}
+
+interface IPortkeyUIManagerService {
+  +login(): Promise<UnlockedWallet | undefined>
+  +openAssetsDashboard(): Promise<void>
+  +guardiansManager(): Promise<void>
+  +settingsManager(): Promise<void>
+  +paymentSecurityManager(): Promise<void>
+  +unlockWallet(): Promise<UnlockedWallet | undefined>
+}
+
+class PortkeyAccountService {
+  +callCaContractMethod(props: CallCaMethodProps): Promise<BaseMethodResult>
+  +getWalletInfo(): Promise<UnlockedWallet>
+  +getWalletState(): Promise<WalletState>
+  +lockWallet(): Promise<boolean>
+  +exitWallet(): Promise<boolean>
+}
+
+class UIManagerService {
+  +login(): Promise<UnlockedWallet | undefined>
+  +openAssetsDashboard(): Promise<void>
+  +guardiansManager(): Promise<void>
+  +settingsManager(): Promise<void>
+  +paymentSecurityManager(): Promise<void>
+  +unlockWallet(): Promise<UnlockedWallet | undefined>
+  -checkIsUnlocked():Promise<boolean>
+  -openFromExternal(target: PortkeyEntries)
+  -openResultFromExternal<R>(target: PortkeyEntries, callback: (res: EntryResult<R>) => void)
+}
+
+class Portkey {
+  +login(): Promise<UnlockedWallet | undefined>
+  +openAssetsDashboard(): Promise<void>
+  +guardiansManager(): Promise<void>
+  +settingsManager(): Promise<void>
+  +paymentSecurityManager(): Promise<void>
+  +unlockWallet(): Promise<UnlockedWallet | undefined>
+  +callCaContractMethod(props: CallCaMethodProps): Promise<BaseMethodResult>
+  +getWalletInfo(): Promise<UnlockedWallet>
+  +getWalletState(): Promise<WalletState>
+  +lockWallet(): Promise<boolean>
+  +exitWallet(): Promise<boolean>
+}
+
+PortkeyAccountService ..|> IPortkeyAccountService
+UIManagerService ..|> IPortkeyUIManagerService
+Portkey ..|> IPortkeyAccountService
+Portkey ..|> IPortkeyUIManagerService
+Portkey --> PortkeyAccountService
+Portkey --> UIManagerService
+UIManagerService --> PortkeyAccountService  : "IoC"
+' note "Use IoC, Service can continuous iteration" as N1
+' PortkeyAccountService .. N1
+' UIManagerService .. N1
+@enduml

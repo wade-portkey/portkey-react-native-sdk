@@ -1,0 +1,6 @@
+{
+  "extends": "react-native-sdk-beta/tsconfig.json",
+  "compilerOptions": {
+    
+  }
+}
