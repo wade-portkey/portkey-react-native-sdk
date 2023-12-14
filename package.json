@@ -8,7 +8,9 @@
   "files": [
     "dist",
     "script/postinstall.js",
-    "android/src",
+    "android/src/main/java",
+    "android/src/main/res",
+    "android/src/main/AndroidManifest.xml",
     "android/build.gradle",
     "ios/Assets",
     "ios/Classes",
