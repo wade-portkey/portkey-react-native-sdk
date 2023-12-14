@@ -1,5 +1,6 @@
 # build index.android.bundle
-cd ../
+SCRIPT_DIR=$(dirname "$0")
+cd "$SCRIPT_DIR/../"
 if [ ! -d "android/src/main/assets" ]; then
   mkdir -p android/src/main/assets
 fi
