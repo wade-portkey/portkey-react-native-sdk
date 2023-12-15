@@ -1,22 +1,39 @@
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { existsSync, writeFileSync } = require('fs');
+const path = require('path');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { resolve } = require('path');
-
+const fs = require('fs');
 // native-dependencies.js path
-const nativeDependenciesPath = resolve(__dirname, '../native-dependencies.js');
+const nativeDependenciesPath = path.resolve(__dirname, '../native-dependencies.js');
+let projectRoot;
+try {
+  const reactNativePath = require.resolve('react');
+  projectRoot = path.resolve(reactNativePath, '../../..');
+} catch (e) {
+  console.warn('no react!');
+}
+if (!projectRoot) {
+  let currentDir = __dirname;
+  while (currentDir !== '/') {
+    if (fs.existsSync(path.join(currentDir, 'node_modules'))) {
+      break;
+    }
+    currentDir = path.dirname(currentDir);
+  }
+  projectRoot = currentDir;
+}
+
+console.log(`Project root: ${projectRoot}`);
 
 // react-native.config.js path
-const configPath = resolve(process.cwd(), 'react-native.config.js');
-
+const configPath = path.resolve(projectRoot, 'react-native.config.js');
 // require native-dependencies.js
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const nativeDependencies = require(nativeDependenciesPath);
 // check react-native.config.js exist
-if (!existsSync(configPath)) {
+if (!fs.existsSync(configPath)) {
   console.log('react-native.config.js absent');
   // create react-native.config.js file，and load the dependencies value of native-dependencies.js  file  to the new file()
-  writeFileSync(configPath, `module.exports = ${JSON.stringify(nativeDependencies, null, 2)};`);
+  fs.writeFileSync(configPath, `module.exports = ${JSON.stringify(nativeDependencies, null, 2)};`);
 } else {
   console.log('react-native.config.js exist');
   // merge the dependencies value of native-dependencies.js  file to the new file!
@@ -34,5 +51,5 @@ if (!existsSync(configPath)) {
   }
 
   // save react-native.config.js
-  writeFileSync(configPath, `module.exports = ${JSON.stringify(config, null, 2)};`);
+  fs.writeFileSync(configPath, `module.exports = ${JSON.stringify(config, null, 2)};`);
 }
