@@ -56,6 +56,7 @@ export default class GuardianApprovalEntryPage extends BaseContainer<
         const { data } = res;
         if (data?.finished) {
           this.onFinish({
+            animated: false,
             status: 'success',
             data: {
               isVerified: true,
