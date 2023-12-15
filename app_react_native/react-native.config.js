@@ -1,9 +1,4 @@
 module.exports = {
-  "project": {
-    "android": {
-      "sourceDir": "./android"
-    }
-  },
   "dependencies": {
     "@invertase/react-native-apple-authentication": {},
     "@react-native-async-storage/async-storage": {},

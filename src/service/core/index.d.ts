@@ -10,6 +10,7 @@ declare class Portkey implements IPortkeyAccountService, IPortkeyUIManagerServic
   guardiansManager(): Promise<void>;
   settingsManager(): Promise<void>;
   paymentSecurityManager(): Promise<void>;
+  scanQRCodeManager(): Promise<void>;
   unlockWallet(): Promise<UnlockedWallet | null>;
   callCaContractMethod(props: CallCaMethodProps): Promise<BaseMethodResult>;
   getWalletInfo(): Promise<UnlockedWallet>;

@@ -17,3 +17,4 @@ babel.config.js
 metro.config.js
 react-native.config.js
 android/upload.gradle
+android/src/main/assets/js

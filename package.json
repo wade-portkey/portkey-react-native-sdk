@@ -8,7 +8,9 @@
   "files": [
     "dist",
     "script/postinstall.js",
-    "android/src",
+    "android/src/main/java",
+    "android/src/main/res",
+    "android/src/main/AndroidManifest.xml",
     "android/build.gradle",
     "ios/Assets",
     "ios/Classes",
@@ -109,10 +111,11 @@
   },
   "scripts": {
     "start": "react-native start",
-    "build": " rm -rf dist/ && tsc && rm -rf ./dist/src/ && babel index.ts --out-file dist/index.js --extensions \".js,.jsx,.ts,.tsx,.json\" && babel src --out-dir dist/src --extensions \".js,.jsx,.ts,.tsx\" && cpy \"src/**/*.(json|png|svg|d.ts)\" dist/src",
+    "build": "rm -rf dist/ && tsc && babel src --out-dir dist --extensions \".js,.jsx,.ts,.tsx\" && cpy \"src/**/*.(json|png|svg|d.ts)\" dist",
     "postinstall": "node ./script/postinstall.js",
     "lint": "eslint . --ext .ts,.tsx",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build",
+    "build-bundle": "./script/build-android-bundle.sh"
   },
   "devDependencies": {
     "@babel/cli": "^7.23.4",

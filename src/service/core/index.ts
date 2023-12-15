@@ -26,6 +26,9 @@ class Portkey implements IPortkeyAccountService, IPortkeyUIManagerService {
   async paymentSecurityManager() {
     this._portkeyUIManagerService.paymentSecurityManager();
   }
+  async scanQRCodeManager() {
+    this._portkeyUIManagerService.scanQRCodeManager();
+  }
   async unlockWallet() {
     return this._portkeyUIManagerService.unlockWallet();
   }

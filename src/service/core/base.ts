@@ -12,6 +12,7 @@ export interface IPortkeyUIManagerService {
   login(): Promise<UnlockedWallet | null>;
   openAssetsDashboard(): Promise<void>;
   guardiansManager(): Promise<void>;
+  scanQRCodeManager(): Promise<void>;
   settingsManager(): Promise<void>;
   paymentSecurityManager(): Promise<void>;
   unlockWallet(): Promise<UnlockedWallet | null>;

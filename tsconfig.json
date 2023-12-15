@@ -66,7 +66,7 @@
       // }
       "outDir": "./dist",
       "declaration": true,
-      "emitDeclarationOnly": true,
+      "noEmit": true,
       // Decorator enable
       "types": ["reflect-metadata"],
       "experimentalDecorators": true,
@@ -83,6 +83,5 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "index.ts"
   ]
 }
