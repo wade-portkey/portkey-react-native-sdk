@@ -47,6 +47,7 @@
     "aelf-sdk": "^3.2.45-beta.1",
     "arg": "^4.1.0",
     "aws-sdk": "^2.1438.0",
+    "chalk": "^5.3.0",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.9",
     "eslint-plugin-no-inline-styles": "^1.0.5",

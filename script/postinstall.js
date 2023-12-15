@@ -4,6 +4,8 @@ const path = require('path');
 const fs = require('fs');
 // native-dependencies.js path
 const nativeDependenciesPath = path.resolve(__dirname, '../native-dependencies.js');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const packageName = require(path.resolve(__dirname, '../package.json')).name;
 let projectRoot;
 try {
   const reactNativePath = require.resolve('react');
@@ -20,6 +22,36 @@ if (!projectRoot) {
     currentDir = path.dirname(currentDir);
   }
   projectRoot = currentDir;
+}
+// check projectRoot is valid
+const rootPackage = path.resolve(projectRoot, 'package.json');
+if (fs.existsSync(rootPackage)) {
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+  const { dependencies } = require(`${projectRoot}/package.json`);
+  if (!dependencies[packageName]) {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const nativeDependencies = require(nativeDependenciesPath);
+    let chalk;
+    import('chalk')
+      .then(module => {
+        chalk = module.default;
+        console.warn(chalk.red.bold('Auto configuration dependencies fail! '));
+        console.warn(
+          chalk.red.bold(`The manual configuration steps are as follows:\n1. Create a ${chalk.yellow.bold(
+            'react-native.config.js',
+          )} file in the project root directory\n2. Copy the content of ${chalk.green.bold(
+            `module.exports = ${JSON.stringify(nativeDependencies)}`,
+          )} to the ${chalk.yellow.bold('react-native.config.js')} file
+      `),
+        );
+      })
+      .catch(() => {
+        console.warn('Auto configuration dependencies fail! ');
+        console.warn(`The manual configuration steps are as follows:\n1. Create a react-native.config.js file in the project root directory\n2. Copy the content of
+          module.exports = ${JSON.stringify(nativeDependencies)} to the react-native.config.js file`);
+      });
+    return;
+  }
 }
 
 console.log(`Project root: ${projectRoot}`);
