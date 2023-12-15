@@ -1,10 +1,13 @@
 {
   "name": "@portkey/react-native-sdk",
-  "version": "1.0.0",
-  "repository": "https://github.com/carbon-portkey/react-native-sdk-demo.git",
+  "version": "1.0.0-alpha.0",
   "author": "Carbon.lv <130360750+carbon-portkey@users.noreply.github.com>",
   "license": "MIT",
   "main": "./dist/index.js",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "files": [
     "dist",
     "script/postinstall.js",
