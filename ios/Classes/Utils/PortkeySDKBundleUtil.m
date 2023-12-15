@@ -32,6 +32,12 @@ const static NSString *kUseLocalBundleKey = @"UseLocalBundleKey";
 + (NSURL *)sourceURL
 {
 #if DEBUG
+    return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index"];
+#else
+    return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+#endif
+    /*
+#if DEBUG
     if ([self useLocalBundle]) {
         return [self bundleUrl];
     } else {
@@ -40,6 +46,7 @@ const static NSString *kUseLocalBundleKey = @"UseLocalBundleKey";
 #else
     return [self bundleUrl];
 #endif
+     */
 }
 
 @end
