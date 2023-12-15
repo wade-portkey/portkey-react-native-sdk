@@ -67,7 +67,7 @@ RCT_EXPORT_METHOD(navigateToWithOptions:(NSString *)entry
         UINavigationController *navigationController = topViewController.navigationController;
         
         if ([self isNavigateToSingleTask:navigationController entry:entry]) {
-            [self navigateToSingleTask:navigationController entry:entry params:params];
+            [self navigateToSingleTask:navigationController entry:entry params:[params valueForKey:@"params"]];
             return;
         }
         

@@ -23,7 +23,7 @@ const useBaseContainer = (props: BaseContainerHookedProps): BaseContainerHooks =
     }
     if (onNewIntent) {
       onNewIntentListener.current?.remove();
-      onNewIntentListener.current = DeviceEventEmitter.addListener('onNewIntent', params => {
+      onNewIntentListener.current = PortkeyDeviceEventEmitter.addListener('onNewIntent', params => {
         onNewIntent?.(params);
       });
     }
