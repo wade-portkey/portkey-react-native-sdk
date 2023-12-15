@@ -77,6 +77,7 @@ export default function SetPin({ deliveredSetPinInfo, oldPin }: SetPinPageProps)
             res => {
               if (res?.status === 'success') {
                 onFinish<SetPinPageResult>({
+                  animated: false,
                   status: 'success',
                   data: {
                     finished: true,

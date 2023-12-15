@@ -77,6 +77,7 @@ export default function ConfirmPin({ oldPin, pin, deliveredSetPinInfo }: Confirm
         Loading.hide();
         if (res) {
           onFinish({
+            animated: false,
             status: 'success',
             data: {
               finished: true,
